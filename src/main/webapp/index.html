@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>GIPHY_API</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="Header">
+    <img src="https://fontmeme.com/permalink/191118/4444c38a76080519f37bee751a73515e.png" class="header-img">
+    </div>
+	<div class="container">
+		<form class="form"> 
+			<div class="form-row">
+	   				<input id="input" class="form-control" type="text" placeholder="Type to search...">
+			</div>
+			<div class="form-row2">
+				<div class="col-md-3">
+					<button id="button" class="btn" type="submit" >Search</button>
+				</div>
+				<div class="col-md-3">
+					<label class="label-view">View: </label>
+	   				<button type="button" class="btn-view">
+	   					<div id="view">Grid</div>
+	   				</button>
+	   			</div>
+			</div>	   			
+		</form>	
+		<div id="result"></div>
+	</div>
+	<div class="footer">
+		<p>Made by Georgi Terziyski</p>
+	</div>
+	
+	
+    <ul class="list-group d-none" id="list-view">
+        <li class="media">
+        	<img src="" class="align-self-center mr-3">    
+            <div class="media-body">
+                 <p></p>
+            </div>
+        </li>
+    </ul>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+</html>
