@@ -17,67 +17,59 @@ $(function(){
         })
         .done(function( response ) {
             console.log("Success", response);
+            var view = $("#view").text();
             for(var i in response.data){
             	var url = response.data[i].images.original.url;
             	var title = response.data[i].title;
-            	var view = document.getElementById("view");
-            	if(view.innerHTML === "Grid"){
-            		var card = createCard(url, title);
-            		$("#result").prepend(card);
-            	} else {
-            		var media = createMedia(url, title);
-            		$("#result").prepend(media);
-            	}
+            	var obj = createObject(url, title);
+            	$("#result").prepend(obj);
             }
         })
 	})
 	
-    var createMedia = function(url, title){
-        var $list = $('#list-view').html();
+    var createObject = function(url, title){
+        var $list = $('#view-temp').html();
         $list = $($list);
+        $list.find('h5').text(title);
         $list.find('img').attr('src', url);
-        $list.find('p').text(title);        
+    	if($("#view").text() === "Grid"){
+            $list.addClass("card");
+            $list.find('div').filter(":first").addClass("card-body");
+            $list.find('img').addClass("card-img-top");
+    	} else {
+            $list.addClass("media");
+            $list.find('img').addClass("align-self-center mr-3");
+            $list.find('div').filter(":first").addClass("media-body");
+    	}
         return $list;
     }
-	
-	var createCard = function (url, title){
-        var $grid = $('#grid-view').html();
-        $grid = $($grid);
-        $grid.find('img').attr('src', url);
-        $grid.find('h5').text(title);        
-        return $grid;
-	}
 	
 	function changeView(view){
         $('#result').children().each(function () {
         	var $gif = $(this);
         	if(view === "Grid"){
-        		var url = $gif.find('img').attr('src');
-        		var title = $gif.find('p').text();
-        		$gif.remove();
-        		var card = createCard(url, title);
-        		$('#result').append(card);
+         	    $gif.removeClass("media").addClass("card");
+         	    $gif.find("div").filter(":first").removeClass("media-body").addClass("card-body");
+         	    $gif.find("img").removeClass("align-self-center mr-3").addClass("card-img-top");
         	} else {
-        		var url = $gif.find('img').attr('src');
-        		var title = $gif.find('h5').text();
-        		$gif.remove();
-                var media = createMedia(url, title);
-                $("#result").append(media);      		
-        	}
+        		$gif.removeClass("card").addClass("media");
+        		$gif.find("div").filter(":first").removeClass("card-body").addClass("media-body");
+        		$gif.find("img").removeClass("card-img-top").addClass("align-self-center mr-3");
+			}
         });
 	}	
 	
 	function toggleView(){
-		var view = document.getElementById("view");
-		if(view.innerHTML === "Grid"){
-			view.innerHTML = " List";
+		var view = $("#view").text();
+		if(view == "Grid"){
+			$("#view").text("List");
 		} else {
-			view.innerHTML = "Grid";
+			$("#view").text("Grid");
 		}
 		if( $('#result').is(':empty') ) {
 			return;
 		}
-		changeView(view.innerHTML);	
+		changeView($("#view").text());	
 	}
 	
 	$('.btn-view').on("click", function(){
