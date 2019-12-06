@@ -1,10 +1,72 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>GIPHY_API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    
 </head>
+
 <body>
 
+    <div class="navbar-wrapper sticky-top" id="navbar-container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <a class="navbar-brand" href="#">Hello</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Начало
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Приятели</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favourites.html">Любими</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Профил</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="login.html">Вход</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="d-flex justify-content-center align-items-center login-container">
+        <form class="login-form text-center">
+            <h1 class="mb-5 text-uppercase">Вход</h1>
+            <div class="form-group">
+                <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Потребителско име">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control rounded-pill form-control-lg" placeholder="Парола">
+            </div>
+            <button type="submit" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Влез</button>
+            <p class="mt-3">Нямаш акаунт?  <a href="#"><strong>Регистрирай се!</strong></a></p>
+        </form>
+    </div>
+
+	<div class="footer">
+        <p>Made by Georgi Terziyski</p>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
 </body>
+
 </html>
