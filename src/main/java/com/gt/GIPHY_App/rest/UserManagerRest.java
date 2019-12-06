@@ -2,6 +2,7 @@ package com.gt.GIPHY_App.rest;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,12 +16,16 @@ public class UserManagerRest {
 
 	private UserRepository repository;
 	
+	@Autowired
+	public UserManagerRest(final UserRepository repository) {
+		this.repository = repository;
+	}
 	@GetMapping("/getCurrentUser")
 	public User getCurrentUser(final HttpSession session) {
 		return (User) session.getAttribute("currentUser");
 	}
 	
-	@PostMapping(value = "/register")
+	@PostMapping(value = "/registerUser")
 	public User register(@RequestParam(name = "email") String email,
 						 @RequestParam(name = "userName") String userName,
 						 @RequestParam(name = "password") String password) {
