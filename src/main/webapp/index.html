@@ -13,16 +13,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <div class="container">
-
-            <a class="navbar-brand" href="#"></a>
+	<div class="navbar-wrapper" id="navbar-container">
+	    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Hello</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
@@ -40,49 +38,65 @@
                         <a class="nav-link" href="#">Профил</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Изход</a>
+                        <a class="nav-link" href="#">Вход</a>
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-    
-    <div class="Header">
-    <img src="https://fontmeme.com/permalink/191118/4444c38a76080519f37bee751a73515e.png" class="header-img">
+    	</nav>
     </div>
+    
 	<div class="container">
-		<form class="form"> 
-			<div class="form-row">
-	   				<input id="input" class="form-control" type="text" placeholder="Type to search...">
-			</div>
-			<div class="form-row2">
-				<div class="col-md-3">
-					<button id="button" class="btn" type="submit" >Search</button>
+	    <div class="Header">
+  		  <img src="https://fontmeme.com/permalink/191118/4444c38a76080519f37bee751a73515e.png" class="img-fluid">
+  		</div>
+  		<div class="form-wrapper">
+			<form class="form"> 
+				<div class="form-row">
+		   			<input id="input" class="form-control" type="text" placeholder="Type to search...">
 				</div>
-				<div class="col-md-3">
-					<label class="label-view">View: </label>
-	   				<button type="button" class="btn-view">
-	   					<div id="view">Grid</div>
-	   				</button>
-	   			</div>
-			</div>	   			
-		</form>	
+				<div class="form-row2">
+					<div class="col-md-3">
+						<button id="button" class="btn" type="submit" >Search</button>
+					</div>
+					<div class="col-md-3 text-align-center">
+						<label class="label-view">View: </label>
+		   				<button type="button" class="btn-view">
+		   					<div id="view">Grid</div>
+		   				</button>
+		   			</div>
+				</div>	   			
+			</form>	
+		</div>
 		<div id="result"></div>
 	</div>
+	
 	<div class="footer">
 		<p>Made by Georgi Terziyski</p>
 	</div>
-	
 	
     <ul class="list-group d-none" id="list-view">
         <li class="media">
         	<img src="" class="align-self-center mr-3">    
             <div class="media-body">
                  <p></p>
+                 <div class="text-right pr-3">
+                 	<a href="#" class="card-link">Запази</a>
+                 </div>
             </div>
         </li>
     </ul>
     
+    <ul class="list-group d-none" id="grid-view">
+        <li class="card">
+        	<img src="" class="card-img-top img-fluid">    
+            <div class="card-body">
+                 <h5></h5>
+                 <div class="text-right">
+                 	<a href="#" class="card-link">Запази</a>
+                 </div>
+            </div>
+        </li>
+    </ul>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

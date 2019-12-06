@@ -12,21 +12,23 @@ $(function(){
         $.ajax({
             url: "http://api.giphy.com/v1/gifs/search?q="+
             input +
-            "&api_key=DBFMyEd3Qs9z4ht48oGNqyk7E0GCMMzs&limit=1",
+            "&api_key=DBFMyEd3Qs9z4ht48oGNqyk7E0GCMMzs&limit=32",
             type: "GET",
         })
         .done(function( response ) {
             console.log("Success", response);
-            var url = response.data[0].images.original.url;
-            var title = response.data[0].title;
-    		var view = document.getElementById("view");
-    		if(view.innerHTML === "Grid"){
-    			var fig = createFigure(url, title);
-                $("#result").prepend(fig);
-    		} else {
-                var media = createMedia(url, title);
-                $("#result").prepend(media);
-    		}	
+            for(var i in response.data){
+            	var url = response.data[i].images.original.url;
+            	var title = response.data[i].title;
+            	var view = document.getElementById("view");
+            	if(view.innerHTML === "Grid"){
+            		var card = createCard(url, title);
+            		$("#result").prepend(card);
+            	} else {
+            		var media = createMedia(url, title);
+            		$("#result").prepend(media);
+            	}
+            }
         })
 	})
 	
@@ -38,18 +40,12 @@ $(function(){
         return $list;
     }
 	
-	var createFigure = function (url, title){
-		var fig = document.createElement("figure");
-		fig.classList.add("figure");
-		var img = document.createElement("img");
-		img.classList.add("figure-img");
-		img.src = url;
-		var figc = document.createElement("figcaption");
-		figc.classList.add("figure-caption");
-		figc.innerText = title;
-		fig.appendChild(figc);
-		fig.appendChild(img);
-		return fig;
+	var createCard = function (url, title){
+        var $grid = $('#grid-view').html();
+        $grid = $($grid);
+        $grid.find('img').attr('src', url);
+        $grid.find('h5').text(title);        
+        return $grid;
 	}
 	
 	function changeView(view){
@@ -59,11 +55,11 @@ $(function(){
         		var url = $gif.find('img').attr('src');
         		var title = $gif.find('p').text();
         		$gif.remove();
-        		var fig = createFigure(url, title);
-        		$('#result').append(fig);
+        		var card = createCard(url, title);
+        		$('#result').append(card);
         	} else {
         		var url = $gif.find('img').attr('src');
-        		var title = $gif.find('figcaption').text();
+        		var title = $gif.find('h5').text();
         		$gif.remove();
                 var media = createMedia(url, title);
                 $("#result").append(media);      		
