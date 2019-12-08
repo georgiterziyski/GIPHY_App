@@ -1,5 +1,24 @@
 $(function(){
-	
+
+	var getCurrentUser = function(){
+		$.ajax({
+			method: "GET",
+			url: "getCurrentUser"
+		})
+		.done(function(response) {
+			if(!response){
+				$("#status").val("Вход");
+				$(".navbar-brand").val("");
+				return;
+			}
+			console.log(response);
+			var $loggininfo = $(".navbar-brand");
+			$("#status").text("Изход");
+			$loggininfo.text("Здравей, "+response.username)
+		});
+	}
+	getCurrentUser();
+
 	$("#button").on("click", function(e){
 		e.preventDefault()
 		var input = $("#input").val();

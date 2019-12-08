@@ -14,22 +14,33 @@ import com.gt.GIPHY_App.repos.UserRepository;
 @RestController
 public class UserManagerRest {
 
-	private UserRepository repository;
-	
+	private final UserRepository repository;
+
 	@Autowired
 	public UserManagerRest(final UserRepository repository) {
 		this.repository = repository;
 	}
+
+	@PostMapping(value = "/login")
+	public String login(@RequestParam(name = "email") final String email,
+			@RequestParam(name = "password") final String password, final HttpSession session) {
+		final User currentUser = repository.findByEmailAndPassword(email, password);
+		if (null != currentUser) {
+			session.setAttribute("currentUser", currentUser);
+		}
+		return "index.html";
+	}
+
 	@GetMapping("/getCurrentUser")
 	public User getCurrentUser(final HttpSession session) {
 		return (User) session.getAttribute("currentUser");
 	}
-	
+
 	@PostMapping(value = "/registerUser")
-	public User register(@RequestParam(name = "email") String email,
-						 @RequestParam(name = "userName") String userName,
-						 @RequestParam(name = "password") String password) {
-		final User newUser = new User(userName, password, email);
+	public User register(@RequestParam(name = "email") final String email,
+			@RequestParam(name = "username") final String username,
+			@RequestParam(name = "password") final String password) {
+		final User newUser = new User(username, password, email);
 		return repository.saveAndFlush(newUser);
 	}
 }

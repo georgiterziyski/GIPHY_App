@@ -45,6 +45,9 @@ body, html{
   border-color:#409fc1;
   box-shadow: 0 0 8px 0.2rem  hsl(337, 51%, 50%);
 }
+.btn-secondary{
+	min-height: 48px;
+}
 .btn-custom{
   background: #409fc1;
   border-color:#409fc1;
@@ -72,4 +75,14 @@ body, html{
 	padding: 10px;
 	margin-right: 10px;
 	margin-top: 10px;
+}
+#registerModal{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+}
+.modal-content{
+  border-radius: 4px;
+  background-color: #e4ebee;
 }

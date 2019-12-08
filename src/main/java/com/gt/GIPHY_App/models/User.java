@@ -29,9 +29,6 @@ public class User implements Serializable{
 	@Column(name = "Email", nullable = false, unique = true)
 	private String email;
 	
-	@Column(name = "Fullname")
-	private String fName;
-	
 	public User() {
 		
 	}
@@ -63,14 +60,6 @@ public class User implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getfName() {
-		return fName;
-	}
-
-	public void setfName(String fName) {
-		this.fName = fName;
 	}
 
 	public int getId() {
