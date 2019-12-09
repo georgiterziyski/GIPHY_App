@@ -9,7 +9,6 @@ body, html {
   justify-content: center;
   align-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
   background: url("../img/colors.jpg") no-repeat center fixed;
   background-size: cover;
 }

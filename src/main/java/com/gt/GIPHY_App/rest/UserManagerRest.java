@@ -21,9 +21,15 @@ public class UserManagerRest {
 		this.repository = repository;
 	}
 
+	@PostMapping(value = "/logout")
+	public String logout(final HttpSession session){
+		session.removeAttribute("currentUser");
+		return "login.html";
+	}
 	@PostMapping(value = "/login")
-	public String login(@RequestParam(name = "email") final String email,
-			@RequestParam(name = "password") final String password, final HttpSession session) {
+	public String login(@RequestParam(name = "email") 	 final String email,
+						@RequestParam(name = "password") final String password,
+														 final HttpSession session) {
 		final User currentUser = repository.findByEmailAndPassword(email, password);
 		if (null != currentUser) {
 			session.setAttribute("currentUser", currentUser);
@@ -37,9 +43,9 @@ public class UserManagerRest {
 	}
 
 	@PostMapping(value = "/registerUser")
-	public User register(@RequestParam(name = "email") final String email,
-			@RequestParam(name = "username") final String username,
-			@RequestParam(name = "password") final String password) {
+	public User register(@RequestParam(name = "email") 	  final String email,
+						 @RequestParam(name = "username") final String username,
+						 @RequestParam(name = "password") final String password) {
 		final User newUser = new User(username, password, email);
 		return repository.saveAndFlush(newUser);
 	}

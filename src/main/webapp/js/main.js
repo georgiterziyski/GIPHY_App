@@ -7,22 +7,35 @@ $(function(){
 		})
 		.done(function(response) {
 			if(!response){
-				$("#status").val("Вход");
+				$("#status").text("Вход");
 				$(".navbar-brand").val("");
 				return;
 			}
 			console.log(response);
-			var $loggininfo = $(".navbar-brand");
 			$("#status").text("Изход");
-			$loggininfo.text("Здравей, "+response.username)
+			$(".navbar-brand").text("Здравей, "+response.username)
 		});
 	}
 	getCurrentUser();
 
+	$("#status").on("click", function(e){
+		e.preventDefault();
+		if($("#status").val() === "Вход"){
+			return;
+		}
+		$.ajax({
+            method : "POST",
+			url : "logout",
+			data: null
+        }).done(function(response) {
+			window.location = response;
+        });
+	})
+	
 	$("#button").on("click", function(e){
-		e.preventDefault()
+		e.preventDefault();
 		var input = $("#input").val();
-		if(input == ""){
+		if(input === ""){
 			return;
 		}
 		$("#input").val("");
@@ -50,7 +63,8 @@ $(function(){
         var $list = $('#view-temp').html();
         $list = $($list);
         $list.find('h5').text(title);
-        $list.find('img').attr('src', url);
+		$list.find('img').attr('src', url);
+		$list.find('.btn').addClass("save-favourite");
     	if($("#view").text() === "Grid"){
             $list.addClass("card");
             $list.find('div').filter(":first").addClass("card-body");
@@ -94,6 +108,23 @@ $(function(){
 	$('.btn-view').on("click", function(){
 	  toggleView();	
 	})
+
+	$('.save-favourite').on("click", function() {
+		console.log("CLicked");
+		debugger
+	    var url = $(".save-favourite").closest(".img").find('.src');
+        var title = $(".save-favourite").closest(".h5").val();
+        $.ajax({
+            method : "POST",
+            url : "addFavourite",
+            data : {
+                url   : url,
+                title : title
+            }
+        }).done(function(response) {
+            console.log(response);
+        });
+    })
 	
 })
 

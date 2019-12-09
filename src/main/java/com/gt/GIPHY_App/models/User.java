@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name="User")
-@JsonIgnoreProperties("password")
+@JsonIgnoreProperties({"favourites", "password"})
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
