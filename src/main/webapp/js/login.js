@@ -4,9 +4,10 @@
         var password = $("#password").val();
         $.ajax({
             method : "POST",
-            url : "login",
-            data : {
-                email : email,
+            url    : "login",
+            data   : 
+            {
+                email 	 : email,
                 password : password
             }
         }).done(function(response) {
@@ -16,7 +17,5 @@
 
 
     $("#confirm-register").on("click", function(e){
-    	e.preventDefault();
 	    $("#register-form").submit();
-	    window.location = "login.html";
     })
