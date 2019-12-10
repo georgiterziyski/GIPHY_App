@@ -16,5 +16,7 @@
 
 
     $("#confirm-register").on("click", function(e){
+    	e.preventDefault();
 	    $("#register-form").submit();
+	    window.location = "login.html";
     })
