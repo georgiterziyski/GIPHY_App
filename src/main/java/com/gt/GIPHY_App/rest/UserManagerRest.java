@@ -33,6 +33,8 @@ public class UserManagerRest {
 		final User currentUser = repository.findByEmailAndPassword(email, password);
 		if (null != currentUser) {
 			session.setAttribute("currentUser", currentUser);
+		} else {
+			return "login.html";
 		}
 		return "index.html";
 	}

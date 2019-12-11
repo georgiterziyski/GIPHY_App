@@ -1,5 +1,4 @@
-    $("#login-button").on("click", function(e) {
-        e.preventDefault();
+    $("#login-button").on("click", function() {
 	    var email = $("#email").val();
         var password = $("#password").val();
         $.ajax({
@@ -16,6 +15,6 @@
     })
 
 
-    $("#confirm-register").on("click", function(e){
+    $("#confirm-register").on("click", function(){
 	    $("#register-form").submit();
     })

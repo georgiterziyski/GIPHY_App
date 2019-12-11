@@ -64,7 +64,6 @@ $(function(){
         $list = $($list);
         $list.find('h5').text(title);
 		$list.find('img').attr('src', url);
-		$list.find('.btn').addClass("save-favourite");
     	if($("#view").text() === "Grid"){
             $list.addClass("card");
             $list.find('div').filter(":first").addClass("card-body");
@@ -108,23 +107,6 @@ $(function(){
 	$('.btn-view').on("click", function(){
 	  toggleView();	
 	})
-
-	$('.save-favourite').on("click", function() {
-		console.log("CLicked");
-		debugger
-	    var url = $(".save-favourite").closest(".img").find('.src');
-        var title = $(".save-favourite").closest(".h5").val();
-        $.ajax({
-            method : "POST",
-            url : "addFavourite",
-            data : {
-                url   : url,
-                title : title
-            }
-        }).done(function(response) {
-            console.log(response);
-        });
-    })
 	
 })
 
