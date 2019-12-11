@@ -1,0 +1,10 @@
+.container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: wrap;
+}
+.card{
+    margin: 10px;
+}

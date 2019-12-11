@@ -49,7 +49,7 @@ public class FavouriteManagerRest {
 										+ " is removed");
 	}
 
-	@GetMapping("/getFavorites")
+	@GetMapping("/getFavourites")
 	public ResponseEntity<List<Favourite>> getAllFavourites(HttpSession session) {
 		final List<Favourite> favourites = new ArrayList<>();
 		final User user = (User) session.getAttribute("currentUser");
