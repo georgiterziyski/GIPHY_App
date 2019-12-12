@@ -18,6 +18,20 @@ $(function(){
 	}
 	getCurrentUser();
 	
+	$("#status").on("click", function(e){
+		e.preventDefault();
+		if($("#status").val() === "Вход"){
+			return;
+		}
+		$.ajax({
+            method : "POST",
+			url : "logout",
+			data: null
+        }).done(function(response) {
+			window.location = response;
+        });
+	})
+	
 	loadUserFavourites = function() {
 		$.ajax({
 			method : "GET",

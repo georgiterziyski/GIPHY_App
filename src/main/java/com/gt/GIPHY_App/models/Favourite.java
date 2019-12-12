@@ -8,16 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"owner"})
 @Entity
-@NamedQuery(name = "Favourite.findByOwner", 
-query = "select u from Favourite u where u.owner = ?1")
-@NamedQuery(name = "Favourite.findById",
-query = "select u from Favourite u where u.id = ?1")
 public class Favourite implements Serializable{
 
 	private static final long serialVersionUID = 1L;

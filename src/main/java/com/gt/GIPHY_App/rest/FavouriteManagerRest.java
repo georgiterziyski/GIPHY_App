@@ -41,6 +41,7 @@ public class FavouriteManagerRest {
 			if (!user.equals(favouriteForRemove.getOwner())) {
 				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("USER does not match!!!");
 			} else {
+				user.getFavourites().remove(favouriteForRemove);
 				favRepo.delete(favouriteForRemove);
 				return ResponseEntity.ok().body("favourite with id: " + id + " is removed.");
 			}

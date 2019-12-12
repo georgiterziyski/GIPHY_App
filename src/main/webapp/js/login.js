@@ -1,4 +1,4 @@
-    $("#login-button").on("click", function() {
+    $("#login-button").on("click", function(e) {
 	    var email = $("#email").val();
         var password = $("#password").val();
         $.ajax({
