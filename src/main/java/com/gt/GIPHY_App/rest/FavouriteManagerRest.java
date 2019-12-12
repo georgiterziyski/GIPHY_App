@@ -43,10 +43,10 @@ public class FavouriteManagerRest {
 			} else {
 				user.getFavourites().remove(favouriteForRemove);
 				favRepo.delete(favouriteForRemove);
-				return ResponseEntity.ok().body("favourite with id: " + id + " is removed.");
+				return ResponseEntity.ok().body("Favourite with id: " + id + " is removed.");
 			}
 		}else {
-		return ResponseEntity.ok().body("favourite with id: " + id + " is not found!!!");
+		return ResponseEntity.ok().body("Favourite with id: " + id + " is not found!!!");
 		}
 	}
 
