@@ -34,18 +34,19 @@ public class FavouriteManagerRest {
 	public ResponseEntity<String> removeFavourite(@RequestParam(name = "id") int id, HttpSession session) {
 		final User user = (User) session.getAttribute("currentUser");
 		if (null == user) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("");
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("USER not logged in!!!");
 		}
 		final Favourite favouriteForRemove = favRepo.findById(id);
 		if (null != favouriteForRemove) {
 			if (!user.equals(favouriteForRemove.getOwner())) {
-				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("USER does not match!!!");
 			} else {
 				favRepo.delete(favouriteForRemove);
+				return ResponseEntity.ok().body("favourite with id: " + id + " is removed.");
 			}
+		}else {
+		return ResponseEntity.ok().body("favourite with id: " + id + " is not found!!!");
 		}
-		return ResponseEntity.ok().body("favourite with id: " + id 
-										+ " is removed");
 	}
 
 	@GetMapping("/getFavourites")
