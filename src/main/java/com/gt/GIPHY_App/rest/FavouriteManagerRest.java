@@ -34,10 +34,9 @@ public class FavouriteManagerRest {
 	public ResponseEntity<String> removeFavourite(@RequestParam(name = "id") int id, HttpSession session) {
 		final User user = (User) session.getAttribute("currentUser");
 		if (null == user) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-													.body("");
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("");
 		}
-		final Favourite favouriteForRemove = favRepo.findById(id).orElse(null);
+		final Favourite favouriteForRemove = favRepo.findById(id);
 		if (null != favouriteForRemove) {
 			if (!user.equals(favouriteForRemove.getOwner())) {
 				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

@@ -27,16 +27,17 @@ $(function(){
 
 					for (var i = 0; i < response.length; i++) {
 						var favourite = response[i];
-						renderObject(favourite.url, favourite.title);
+						renderObject(favourite.url, favourite.title, favourite.id);
 					}
 
 				}).fail(function(response) {
 			console.log(response);
 		})
 	}
-	var renderObject = function(url, title){
+	var renderObject = function(url, title, id){
         var $list = $('#view-temp').html();
         $list = $($list);
+        $list.find('button').attr('id', id);
         $list.find('h5').text(title);
 		$list.find('img').attr('src', url);
         $list.addClass("card");
@@ -44,4 +45,21 @@ $(function(){
         $list.find('img').addClass("card-img-top");
         $(".container").prepend($list);
     }
+	
+	$(document).on("click", '.remove-favourite', function(e) {
+	    $selectedgif = $(this).closest('.list-group-item');
+	    var id = $selectedgif.find('button').attr('id');
+	    $.ajax({
+	        method : "POST",
+	        url : "removeFavourite",
+	        data : {
+	            id : id
+	        }
+	    }).done(function(response) {
+	        console.log(response);
+	        $selectedgif.remove();
+		}).fail(function(response) {
+			console.log(response);
+		})
+	})
 })

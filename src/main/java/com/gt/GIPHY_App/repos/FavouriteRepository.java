@@ -11,4 +11,5 @@ import com.gt.GIPHY_App.models.User;
 @Repository
 public interface FavouriteRepository extends JpaRepository<Favourite, Integer> {
 	public List<Favourite> findByOwner(final User owner);
+	public Favourite findById(final int id);
 }
