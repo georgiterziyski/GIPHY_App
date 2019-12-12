@@ -43,6 +43,7 @@ public class FavouriteManagerRest {
 			} else {
 				user.getFavourites().remove(favouriteForRemove);
 				favRepo.delete(favouriteForRemove);
+				session.setAttribute("currentUser", userRepo.save(user));
 				return ResponseEntity.ok().body("Favourite with id: " + id + " is removed.");
 			}
 		}else {
