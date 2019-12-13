@@ -1,10 +1,10 @@
-.container{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-flow: wrap;
-}
-.card{
-    margin: 10px;
+.container {
+  margin-top : 10%;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  object-fit: contain;
+  padding-bottom: 100px;
 }

@@ -45,7 +45,7 @@ public class FavouriteManagerRest {
 				return ResponseEntity.ok().body("Favourite with id: " + id + " is removed");
 			}
 		} else {
-			return ResponseEntity.ok().body("Favourite with id: " + id + " is not found");
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Favourite with id: " + id + " is not found");
 		}
 	}
 

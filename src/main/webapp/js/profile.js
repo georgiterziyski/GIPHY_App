@@ -13,6 +13,10 @@ $(function(){
 			console.log(response);
 			$("#status").text("Изход");
 			$(".navbar-brand").text("Здравей, "+response.username)
+			var $email = $("#email");
+            $email.val(response.email);
+            var $user = $("#user");
+            $user.val(response.username)
 		});
 	}
     getCurrentUser();
