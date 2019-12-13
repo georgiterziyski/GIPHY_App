@@ -63,6 +63,18 @@ $(function(){
         $(".container").prepend($list);
     }
 	
+	$(".remove-all").on("click", function() {
+	    $.ajax({
+	        method : "POST",
+	        url : "removeAllFavourites"
+	    }).done(function(response) {
+	        console.log(response);
+	        $(".container").empty();
+		}).fail(function(response) {
+			console.log(response);
+		})
+	})
+	
 	$(document).on("click", '.remove-favourite', function(e) {
 	    $selectedgif = $(this).closest('.list-group-item');
 	    var id = $selectedgif.find('button').attr('id');

@@ -116,3 +116,6 @@ h1{
 #navbar-container{
 	top: 0;	
 }
+.list-group-item{
+	display: inline-flex;
+}

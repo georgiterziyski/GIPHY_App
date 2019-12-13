@@ -30,6 +30,25 @@ public class FavouriteManagerRest {
 		this.userRepo = userRepo;
 	}
 	
+	@PostMapping("/removeAllFavourites")
+	public ResponseEntity<String> removeAllFavourites(HttpSession session) {
+		final List<Favourite> favouritesForRemove = new ArrayList<>();
+		final User user = (User) session.getAttribute("currentUser");
+		if (null == user) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in!!!");
+		}
+		favouritesForRemove.addAll(favRepo.findByOwner(user));
+		if (favouritesForRemove.isEmpty()) {
+			return ResponseEntity.ok().body("Nothing to remove");
+		}
+		final User owner = userRepo.findByEmailAndPassword(user.getEmail(), user.getPassword());
+		owner.getFavourites().removeAll(favouritesForRemove);
+		userRepo.saveAndFlush(owner);
+		favRepo.deleteAll(favouritesForRemove);
+		session.setAttribute("currentUser", owner);
+		return ResponseEntity.ok().body("Favourites are removed");
+	}
+	
 	@PostMapping("/removeFavourite")
 	public ResponseEntity<String> removeFavourite(@RequestParam(name = "id") int id, HttpSession session) {
 		final User user = (User) session.getAttribute("currentUser");
