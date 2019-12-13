@@ -119,3 +119,24 @@ h1{
 .list-group-item{
 	display: inline-flex;
 }
+#navbar-container{
+	background-color: #0009;
+}
+.navbar{
+	margin: 0;
+	padding: 0;
+	height: 80px;
+	line-height: 80px;
+}
+.navbar ul{
+	margin: 0;
+	height: 80px;
+	line-height: 80px;
+}
+.navbar ul li{
+	list-style-position: none;
+	display: inline-block;
+}
+.navbar ul li:hover{
+	background-color: #409fc1;
+}

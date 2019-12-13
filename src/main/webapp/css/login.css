@@ -82,3 +82,6 @@ body, html{
 .container{
 	min-height: 90%;
 }
+#navbar-container{
+	background-color: #0009;
+}
