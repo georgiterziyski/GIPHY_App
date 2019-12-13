@@ -93,6 +93,10 @@ public class User implements Serializable{
 		getFavourites().add(favourite);
 	}
 	
+	public void removeFavourite(Favourite favourite) {
+		getFavourites().remove(favourite);
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

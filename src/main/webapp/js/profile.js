@@ -6,10 +6,6 @@ $(function(){
 			url: "getCurrentUser"
 		})
 		.done(function(response) {
-			if(!response){
-                window.location = "login.html";
-				return;
-			}
 			console.log(response);
 			$("#status").text("Изход");
 			$(".navbar-brand").text("Здравей, "+response.username)
@@ -21,6 +17,9 @@ $(function(){
             $pass.val(response.password);
             var $rep_pass = $("#repeat-password");
             $rep_pass.val(response.password);
+		}).fail(function(response) {
+                window.location = "login.html";
+				return;
 		});
 	}
     getCurrentUser();

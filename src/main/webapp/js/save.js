@@ -12,5 +12,8 @@ $(document).on("click", '.save-favourite', function(e) {
         }
     }).done(function(response) {
         console.log(response);
-    });
+        $selectedgif.find("button").text("Запазено");
+    }).fail(function() {
+		window.location = "login.html"
+	});
 })

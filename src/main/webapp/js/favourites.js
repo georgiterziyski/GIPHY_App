@@ -14,7 +14,10 @@ $(function(){
 			$("#status").text("Изход");
 			$(".navbar-brand").text("Здравей, "+response.username)
 			loadUserFavourites();
-		});
+		}).fail(function(response) {
+            window.location = "login.html";
+			return;
+	});
 	}
 	getCurrentUser();
 	
@@ -38,12 +41,12 @@ $(function(){
 			url : "getFavourites"
 		}).done(
 				function(response) {
-
 					for (var i = 0; i < response.length; i++) {
 						var favourite = response[i];
-						renderObject(favourite.url, favourite.title, favourite.id);
+						renderObject(favourite.url,
+									 favourite.title,
+									 favourite.id);
 					}
-
 				}).fail(function(response) {
 			console.log(response);
 		})

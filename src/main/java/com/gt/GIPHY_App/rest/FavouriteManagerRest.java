@@ -41,7 +41,11 @@ public class FavouriteManagerRest {
 			if (!user.equals(favouriteForRemove.getOwner())) {
 				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 			} else {
-				favRepo.delete(favouriteForRemove);
+				final User owner = userRepo.findByEmailAndPassword(user.getEmail(), user.getPassword());
+				owner.removeFavourite(favouriteForRemove);
+				userRepo.saveAndFlush(owner);
+				favRepo.deleteById(id);
+				session.setAttribute("currentUser", owner);
 				return ResponseEntity.ok().body("Favourite with id: " + id + " is removed");
 			}
 		} else {
