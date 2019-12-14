@@ -128,6 +128,9 @@ h1{
 	height: 80px;
 	line-height: 80px;
 }
+.navbar-brand{
+	margin-left: 20px;;
+}
 .navbar ul{
 	margin: 0;
 	height: 80px;
@@ -136,7 +139,12 @@ h1{
 .navbar ul li{
 	list-style-position: none;
 	display: inline-block;
+	transition: 0.7s all;
 }
 .navbar ul li:hover{
 	background-color: #409fc1;
+}
+.navbar ul li a{
+	padding: 0;
+	margin: 0px 20px 0px 20px;
 }
